@@ -108,7 +108,7 @@ router.post('/send-mail1',async (req, res) => {
        <pre>name: ${req.body.name}</pre>
        <pre>phone: ${req.body.phone}</pre>
        <pre>email: ${req.body.email}</pre>
-       <h5>${req.body.project}</h5>
+       <h5>${req.body.message}</h5>
        <pre>What is the subject of the consultation?: ${req.body.q1}</pre>
        <pre>What type of property do you wan: ${req.body.q2}</pre>
        <pre>type of consultation: ${req.body.q3}</pre>
