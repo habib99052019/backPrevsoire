@@ -102,7 +102,7 @@ router.post('/send-mail1',async (req, res) => {
 
     const mailOptions = {
         from:"habibfullstack90@gmail.com",
-         to: ["heartofcarthagedubai@gmail.com","iheb88ben@outlook.com ","ha9.0bib90@gmail.com"],  //"Contact@heartofcarthage.com" ,
+         to: ["ha9.0bib90@gmail.com"],  //"Contact@heartofcarthage.com" ,
         subject: 'New customer',
        html: `<div><h2>Information to customer</h2></div>
        <pre>name: ${req.body.name}</pre>
