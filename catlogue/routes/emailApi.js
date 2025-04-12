@@ -4,18 +4,19 @@ const router = express.Router();
 const userSchema = require('../models/userSchema')
 /////hnnibal123
 router.get('/send-mail1', (req, res) => {
-  const mode = req.query['hub.mode'];
-  const token = req.query['hub.verify_token'];
-  const challenge = req.query['hub.challenge'];
+  // const mode = req.query['hub.mode'];
+  // const token = req.query['hub.verify_token'];
+  // const challenge = req.query['hub.challenge'];
 
-  const VERIFY_TOKEN = 'mon_token_secret_persohabib122'; // exactement ce que tu mets dans l'interface Meta
+  // const VERIFY_TOKEN = 'mon_token_secret_persohabib122'; // exactement ce que tu mets dans l'interface Meta
 
-  if (mode === 'subscribe' && token === VERIFY_TOKEN) {
-    console.log('WEBHOOK VALIDÉ PAR FACEBOOK');
-    res.status(200).send(challenge);
-  } else {
-    res.sendStatus(403);
-  }
+  // if (mode === 'subscribe' && token === VERIFY_TOKEN) {
+  //   console.log('WEBHOOK VALIDÉ PAR FACEBOOK');
+  //   res.status(200).send(challenge);
+  // } else {
+  //   res.sendStatus(403);
+  // }
+  res.status(200).send({mes:'challenge'});
 });
 router.post('/hannibal',async (req, res) => {
     console.log(req.body.email)
