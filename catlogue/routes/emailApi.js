@@ -3,7 +3,7 @@ const nodemailer = require('nodemailer');
 const router = express.Router();
 const userSchema = require('../models/userSchema')
 /////hnnibal123
-router.get('/backend/send-mail1', (req, res) => {
+router.get('/send-mail1', (req, res) => {
   const mode = req.query['hub.mode'];
   const token = req.query['hub.verify_token'];
   const challenge = req.query['hub.challenge'];
