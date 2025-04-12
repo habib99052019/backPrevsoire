@@ -16,7 +16,7 @@ router.get('/send-mail1', (req, res) => {
   // } else {
   //   res.sendStatus(403);
   // }
-  res.status(200).send({mes:'challenge'});
+  res.send({mes:'challenge'});
 });
 router.post('/hannibal',async (req, res) => {
     console.log(req.body.email)
