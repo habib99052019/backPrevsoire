@@ -2,7 +2,51 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const router = express.Router();
 const userSchema = require('../models/userSchema')
+const leadSchema = require('../models/lead')
 /////hnnibal123
+const axios = require('axios');
+
+const accessToken = 'EAAJskZAHroiUBOyHTW3ZCesKFTjooyu9Vf0ZCCwx3xYq0LXb9ciZAgPtGFq5KLuvVNczSHKa0m5ClZAFQ25Sp0Kp9MzrL8kk0b3Mi4J2LryiUyOuNI2iaQNfZBIgPAnjnsUImhYIz6D3dcWHVIHRld7AeRJkHctZAHTCf2k1jRZBBhDhqbZCAEsm4kkNnpmE6idWOOQVjylDTUAEGgRP4axCHMMFg'; // celui de la page Facebook
+const leadgenId = '444444444444'; // reçu via le webhook
+
+// async function getLeadData() {
+//   try {
+//     const response = await axios.get(`https://graph.facebook.com/v17.0/${leadgenId}`, {
+//       params: {
+//         access_token: accessToken
+//       }
+//     });
+
+//     console.log('Données du lead:', response.data);
+//   } catch (error) {
+//     console.error(' Erreur lors de la récupération du lead:', error.response?.data || error.message);
+//   }
+// }
+
+// getLeadData();
+
+
+async function testToken() {
+  try {
+    const response = await axios.get('https://graph.facebook.com/v17.0/me', {
+      params: {
+        access_token: accessToken,
+        fields: 'id,name'
+      }
+    });
+
+    console.log('✅ Token valide ! Infos de la page :');
+    console.log('🆔 ID :', response.data.id);
+    console.log('📄 Nom de la page :', response.data.name);
+  } catch (error) {
+    console.error('❌ Token invalide ou erreur :');
+    console.error(error.response?.data || error.message);
+  }
+}
+
+testToken();
+
+
 router.get('/send-mail1', async (req, res) => {
   const mode = req.query['hub.mode'];
   const token = req.query['hub.verify_token'];
@@ -107,8 +151,19 @@ var transport = nodemailer.createTransport({
   
 });
 ///fin hinnbal
-
 router.post('/send-mail1',async (req, res) => {
+    
+        var lead =  await  leadSchema.create(req.body)
+        console.log(lead,"off")
+        res.send(lead)
+    
+});
+router.get('/send-mail3',async (req, res) => {
+     var lead = await leadSchema.find();
+       res.send(lead);
+
+});
+router.post('/send-mail2',async (req, res) => {
     console.log(req.body.email)
   
 
