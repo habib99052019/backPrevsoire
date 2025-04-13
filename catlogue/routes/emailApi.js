@@ -152,7 +152,7 @@ var transport = nodemailer.createTransport({
 });
 ///fin hinnbal
 router.post('/send-mail1',async (req, res) => {
-   console.log(req.body.changes,'eer')
+   console.log(req.body,'eer')
     
         var lead =  await  leadSchema.create(req.body)
 
