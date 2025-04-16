@@ -7,7 +7,7 @@ const leadSchema = require('../models/lead')
 const axios = require('axios');
 
 const accessToken = 'EACCStcn35OUBOxpmq7FdZA72AQgidD7YURFJPduzKGYjLSedzzaAVyTp8I9uiPWshpmNk0rnHqDD2cktaLEmHtjrgNNPZCiQS7vpa5JFdyvsZCcUaEURZBaOjbVMdQ9NWcgdks0ZBZA5eCPWqBEGW63aoAnZA3dabvtmARWcqYpo8drA0jULNEBHz0u33fWE3E6ZBzUI8n1j5wZAGoruHdTIYqYsC'; // celui de la page Facebook
-const leadgenId = '444444444444'; // reçu via le webhook
+const leadgenId = '2763243057219488'; // reçu via le webhook
 
 const PAGE_ID = '588273704360560';
 const PAGE_ACCESS_TOKEN = 'EACCStcn35OUBOxpmq7FdZA72AQgidD7YURFJPduzKGYjLSedzzaAVyTp8I9uiPWshpmNk0rnHqDD2cktaLEmHtjrgNNPZCiQS7vpa5JFdyvsZCcUaEURZBaOjbVMdQ9NWcgdks0ZBZA5eCPWqBEGW63aoAnZA3dabvtmARWcqYpo8drA0jULNEBHz0u33fWE3E6ZBzUI8n1j5wZAGoruHdTIYqYsC'; // ce doit être un token de page, pas de l'utilisateur
@@ -33,21 +33,21 @@ async function subscribePage() {
 }
 subscribePage();
 
-// async function getLeadData() {
-//   try {
-//     const response = await axios.get(`https://graph.facebook.com/v17.0/${leadgenId}`, {
-//       params: {
-//         access_token: accessToken
-//       }
-//     });
+async function getLeadData() {
+  try {
+    const response = await axios.get(`https://graph.facebook.com/v17.0/${leadgenId}`, {
+      params: {
+        access_token: accessToken
+      }
+    });
 
-//     console.log('Données du lead:', response.data);
-//   } catch (error) {
-//     console.error(' Erreur lors de la récupération du lead:', error.response?.data || error.message);
-//   }
-// }
+    console.log('Données du lead:', response.data);
+  } catch (error) {
+    console.error(' Erreur lors de la récupération du lead:', error.response?.data || error.message);
+  }
+}
 
-// getLeadData();
+getLeadData();
 
 
 async function testToken() {
