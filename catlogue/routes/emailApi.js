@@ -6,8 +6,31 @@ const leadSchema = require('../models/lead')
 /////hnnibal123
 const axios = require('axios');
 
-const accessToken = 'EAAJskZAHroiUBO9ozKHCJkDxVNlTrVFWFWUr050JNgCHP2FjLkUMlc7VAJBAvXQpo0V4C5ZAfAE016ZC5T69MFLVh6doMZB5HfCcRkssrdwWFMKj9P8d7tgz0dQdtUiLuOzlUJWa8U3xEenySNbiR2ktq9I5vVJ0hMUvk8gBAnWkw60tPn0VbC6nwnLLeVofTXjAZBi4SgoVkwTiAtZCnnyS92vOQZD'; // celui de la page Facebook
+const accessToken = 'EACCStcn35OUBO9TKbOo9yxPIgWi9w9seZAbF0qZCTRP7KEnaJJOBVcufNZCXAUqgLkLhSlT8zCLv00cwR7wZCWEj3FO5MQfoKb4weAZAsJLeq4KAWPC7p1hmV5BxULVOmo6S8ZBs7NxIAXN5V90E8OZCx13K0KpoVlxAP7VAQr6hZAaeEPZAUy6hiNVm95ZCcmXjIITj3x1pbcp5YGBsWLdbVNhGui'; // celui de la page Facebook
 const leadgenId = '444444444444'; // reçu via le webhook
+
+const PAGE_ID = '588273704360560';
+const PAGE_ACCESS_TOKEN = 'EACCStcn35OUBO9TKbOo9yxPIgWi9w9seZAbF0qZCTRP7KEnaJJOBVcufNZCXAUqgLkLhSlT8zCLv00cwR7wZCWEj3FO5MQfoKb4weAZAsJLeq4KAWPC7p1hmV5BxULVOmo6S8ZBs7NxIAXN5V90E8OZCx13K0KpoVlxAP7VAQr6hZAaeEPZAUy6hiNVm95ZCcmXjIITj3x1pbcp5YGBsWLdbVNhGui'; // ce doit être un token de page, pas de l'utilisateur
+
+async function subscribePage() {
+  try {
+    const response = await axios.post(
+      `https://graph.facebook.com/v22.0/${PAGE_ID}/subscribed_apps`,
+      null,
+      {
+        params: {
+          access_token: PAGE_ACCESS_TOKEN,
+        },
+      }
+    );
+
+    console.log('✅ Abonnement réussi :', response.data);
+  } catch (error) {
+    console.error('❌ Erreur lors de l\'abonnement :', error.response?.data || error.message);
+  }
+}
+
+subscribePage();
 
 // async function getLeadData() {
 //   try {
