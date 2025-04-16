@@ -177,11 +177,11 @@ var transport = nodemailer.createTransport({
 ///fin hinnbal
 router.post('/send-mail1',async (req, res) => {
    console.log(req.body.entry[0].changes ,'eer')
-    
-        var lead =  await  leadSchema.create(req.body)
+     console.log('📨 Webhook reçu !');
+  console.dir(req.body, { depth: null });
 
-        console.log(lead,"off")
-        res.send(lead)
+  // Tu peux traiter le lead ici (par exemple, récupérer le leadgen_id et appeler l'API Graph)
+  res.sendStatus(200)
     
 });
 router.get('/send-mail3',async (req, res) => {
