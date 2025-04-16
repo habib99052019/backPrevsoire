@@ -16,7 +16,9 @@ async function subscribePage() {
   try {
     const response = await axios.post(
       `https://graph.facebook.com/v22.0/${PAGE_ID}/subscribed_apps`,
-      null,
+      {
+        subscribed_fields: ['leadgen']
+      },
       {
         params: {
           access_token: PAGE_ACCESS_TOKEN,
@@ -29,7 +31,6 @@ async function subscribePage() {
     console.error('❌ Erreur lors de l\'abonnement :', error.response?.data || error.message);
   }
 }
-
 subscribePage();
 
 // async function getLeadData() {
